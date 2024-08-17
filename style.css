@@ -12,6 +12,10 @@ html, body {
     height: 100vh;
 }
 
+body {
+    cursor: url('images/catpaw.png'), auto;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -80,7 +84,7 @@ h3 {
     z-index: 1;
     flex-grow: 0;
 }
-/* Media Queries */
+
 @media (max-width: 768px) {
     .social-icons a {
         font-size: 20px;
