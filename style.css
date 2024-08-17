@@ -10,7 +10,9 @@ html, body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    cursor: url('https://nooryoosuf.github.io/repository-name/path/to/catpaw.png'), auto;
 }
+
 
 body {
     cursor: url('images/catpaw.png'), auto;
