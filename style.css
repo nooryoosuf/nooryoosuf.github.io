@@ -79,5 +79,40 @@ h3 {
     z-index: 1;
     flex-grow: 0;
 }
+/* Media Queries */
+@media (max-width: 768px) {
+    .social-icons a {
+        font-size: 20px;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    .footer {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-icons a {
+        font-size: 16px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    .footer {
+        font-size: 14px;
+    }
+}
+
 
 
