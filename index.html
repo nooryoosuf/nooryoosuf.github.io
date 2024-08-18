@@ -17,7 +17,7 @@
     <a href="#" class="logo">
       <img src="icon.svg" alt="Logo">
     </a>
-    <h3>This website, much like my life, is a work in progress and may actually see completion when I finally decide to take my existence seriously. Until then, enjoy your boring existence.</h3>
+    <h3 id="scrambleText">This website, much like my life, is a work in progress and may actually see completion when I finally decide to take my existence seriously. Until then, enjoy your boring existence.</h3>
     <div class="social-icons">
       <a href="https://www.facebook.com/nur.yousuf.98" target="_blank"><i class="fa-brands fa-facebook"></i></a>
       <a href="https://www.instagram.com/nur_yousuf/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
@@ -28,45 +28,30 @@
     <p style="text-align: center;">All Rights Reserved. Noor © 2024</p>
   </section>
 
-  <div id="particle-container"></div>
-
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const particleContainer = document.getElementById('particle-container');
+      const text = document.getElementById('scrambleText');
+      const originalText = text.innerText;
+      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-      document.addEventListener('click', (e) => {
-        createParticles(e.clientX, e.clientY);
+      text.addEventListener('click', () => {
+        let iteration = 0;
+        const interval = setInterval(() => {
+          text.innerText = text.innerText.split('')
+            .map((letter, index) => {
+              if (index < iteration) {
+                return originalText[index];
+              }
+              return letters[Math.floor(Math.random() * 26)];
+            })
+            .join('');
+
+          if (iteration >= originalText.length) {
+            clearInterval(interval);
+          }
+          iteration += 1 / 3;
+        }, 30);
       });
-
-      function createParticles(x, y) {
-        for (let i = 0; i < 30; i++) {
-          const particle = document.createElement('div');
-          particle.classList.add('particle');
-          
-          const size = Math.random() * 8 + 2;
-          const destinationX = x + (Math.random() - 0.5) * 200;
-          const destinationY = y + (Math.random() - 0.5) * 200;
-          const rotation = Math.random() * 520;
-          const delay = Math.random() * 200;
-          
-          particle.style.width = `${size}px`;
-          particle.style.height = `${size}px`;
-          particle.style.left = `${x}px`;
-          particle.style.top = `${y}px`;
-          particle.style.backgroundColor = `hsl(${Math.random() * 90 + 180}, 70%, 60%)`;
-          
-          particle.style.setProperty('--destination-x', `${destinationX}px`);
-          particle.style.setProperty('--destination-y', `${destinationY}px`);
-          particle.style.setProperty('--rotation', `${rotation}deg`);
-          particle.style.setProperty('--delay', `${delay}ms`);
-
-          particleContainer.appendChild(particle);
-
-          setTimeout(() => {
-            particle.remove();
-          }, 1000 + delay);
-        }
-      }
     });
   </script>
 </body>
