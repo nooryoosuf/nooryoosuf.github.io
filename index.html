@@ -42,6 +42,12 @@
         }
       });
 
+         function createSparkles(x, y) {
+      for (let i = 0; i < 5; i++) { // Create multiple sparkles at once
+        createSparkle(x, y);
+      }
+    }
+
       function createSparkle(x, y) {
         const sparkle = document.createElement('div');
         sparkle.className = 'sparkle';
