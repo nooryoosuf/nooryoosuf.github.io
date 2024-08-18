@@ -11,6 +11,7 @@ html, body {
     cursor: url('https://nooryoosuf.github.io/repository-name/path/to/catpaw.png'), auto;
 }
 .container {
+    position: relative; /* Added for positioning */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,11 +22,13 @@ html, body {
     display: block;
 }
 .social-icons {
+    position: relative; /* Added for positioning */
     display: flex;
     justify-content: center;
     margin-top: 50px;
 }
 .social-icons a {
+    position: relative; /* Added for positioning */
     color: #FE5B3C;
     font-size: 24px;
     margin-right: 20px;
