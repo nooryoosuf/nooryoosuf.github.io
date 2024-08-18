@@ -36,17 +36,17 @@
 
       document.addEventListener('mousemove', (e) => {
         const currentTime = Date.now();
-        if (currentTime - lastSparkleTime > 20) { // Limit sparkle creation to every 50ms
+        if (currentTime - lastSparkleTime > 20) { // Limit sparkle creation to every 20ms
           createSparkle(e.clientX, e.clientY);
           lastSparkleTime = currentTime;
         }
       });
 
-         function createSparkles(x, y) {
-      for (let i = 0; i < 5; i++) { // Create multiple sparkles at once
-        createSparkle(x, y);
+      function createSparkles(x, y) {
+        for (let i = 0; i < 5; i++) { // Create multiple sparkles at once
+          createSparkle(x, y);
+        }
       }
-    }
 
       function createSparkle(x, y) {
         const sparkle = document.createElement('div');
@@ -59,6 +59,27 @@
           sparkle.remove();
         }, 1000); // Remove sparkle after 1 second
       }
+
+      // Social icons move on hover
+      const socialIcons = document.querySelectorAll('.social-icons a');
+
+      socialIcons.forEach(icon => {
+        icon.addEventListener('mouseover', () => {
+          const container = document.querySelector('.container');
+          const containerRect = container.getBoundingClientRect();
+          const iconRect = icon.getBoundingClientRect();
+
+          const maxX = containerRect.width - iconRect.width;
+          const maxY = containerRect.height - iconRect.height;
+
+          const randomX = Math.floor(Math.random() * maxX);
+          const randomY = Math.floor(Math.random() * maxY);
+
+          icon.style.position = 'absolute';
+          icon.style.left = `${randomX}px`;
+          icon.style.top = `${randomY}px`;
+        });
+      });
     });
   </script>
 </body>
