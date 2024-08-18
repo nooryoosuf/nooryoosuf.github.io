@@ -59,29 +59,6 @@
           sparkle.remove();
         }, 1000); // Remove sparkle after 1 second
       }
-
-      // Social icons move on hover with condition for screen width
-    const socialIcons = document.querySelectorAll('.social-icons a');
-
-    socialIcons.forEach(icon => {
-      icon.addEventListener('mouseover', () => {
-        if (window.innerWidth > 768) { // Only move icons on larger screens
-          const container = document.querySelector('.container');
-          const containerRect = container.getBoundingClientRect();
-          const iconRect = icon.getBoundingClientRect();
-
-          const maxX = containerRect.width - iconRect.width;
-          const maxY = containerRect.height - iconRect.height;
-
-          const randomX = Math.floor(Math.random() * maxX);
-          const randomY = Math.floor(Math.random() * maxY);
-
-          icon.style.position = 'absolute';
-          icon.style.left = `${randomX}px`;
-          icon.style.top = `${randomY}px`;
-        }, 500); // Delay before moving the icon
-      });
-    });
   });
 </script>
 </body>
