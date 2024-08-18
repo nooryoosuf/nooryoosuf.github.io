@@ -36,7 +36,7 @@
 
       document.addEventListener('mousemove', (e) => {
         const currentTime = Date.now();
-        if (currentTime - lastSparkleTime > 20) { // Limit sparkle creation to every 20ms
+        if (currentTime - lastSparkleTime > 30) { // Limit sparkle creation to every 20ms
           createSparkle(e.clientX, e.clientY);
           lastSparkleTime = currentTime;
         }
