@@ -13,11 +13,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body style="background-image: url(new.png);">
+  <div id="sparkle-container"></div>
   <section class="container">
     <a href="#" class="logo">
       <img src="icon.svg" alt="Logo">
     </a>
-    <h3 id="scrambleText">This website, much like my life, is a work in progress and may actually see completion when I finally decide to take my existence seriously. Until then, enjoy your boring existence.</h3>
+    <h3>This website, much like my life, is a work in progress and may actually see completion when I finally decide to take my existence seriously. Until then, enjoy your boring existence.</h3>
     <div class="social-icons">
       <a href="https://www.facebook.com/nur.yousuf.98" target="_blank"><i class="fa-brands fa-facebook"></i></a>
       <a href="https://www.instagram.com/nur_yousuf/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
@@ -30,28 +31,28 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const text = document.getElementById('scrambleText');
-      const originalText = text.innerText;
-      const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const sparkleContainer = document.getElementById('sparkle-container');
+      let lastSparkleTime = 0;
 
-      text.addEventListener('click', () => {
-        let iteration = 0;
-        const interval = setInterval(() => {
-          text.innerText = text.innerText.split('')
-            .map((letter, index) => {
-              if (index < iteration) {
-                return originalText[index];
-              }
-              return letters[Math.floor(Math.random() * 26)];
-            })
-            .join('');
-
-          if (iteration >= originalText.length) {
-            clearInterval(interval);
-          }
-          iteration += 1 / 3;
-        }, 30);
+      document.addEventListener('mousemove', (e) => {
+        const currentTime = Date.now();
+        if (currentTime - lastSparkleTime > 50) { // Limit sparkle creation to every 50ms
+          createSparkle(e.clientX, e.clientY);
+          lastSparkleTime = currentTime;
+        }
       });
+
+      function createSparkle(x, y) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = `${x}px`;
+        sparkle.style.top = `${y}px`;
+        sparkleContainer.appendChild(sparkle);
+
+        setTimeout(() => {
+          sparkle.remove();
+        }, 1000); // Remove sparkle after 1 second
+      }
     });
   </script>
 </body>
